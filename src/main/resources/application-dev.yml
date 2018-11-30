@@ -1,0 +1,8 @@
+# 开发环境配置
+server:
+  #端口号 默认8080
+  port: 8081
+  #指定地址后面的web文件夹
+  servlet:
+    context-path: /springboot
+

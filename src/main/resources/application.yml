@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev
+  # 数据源配置，请修改为你项目的实际配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.66:3306/tododb?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: glsoft
+    password: Glsoft@2018
+
+    #jpa设置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
