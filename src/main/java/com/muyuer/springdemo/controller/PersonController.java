@@ -1,5 +1,6 @@
 package com.muyuer.springdemo.controller;
 
+import com.muyuer.springdemo.core.UserLoginToken;
 import com.muyuer.springdemo.dao.PersonRepository;
 import com.muyuer.springdemo.entity.Person;
 import com.muyuer.springdemo.service.PersonService;
@@ -23,6 +24,7 @@ public class PersonController {
      *
      * @return
      */
+    @UserLoginToken
     @GetMapping(value = "/person")
     private List<Person> personList() {
         return personRepository.findAll();

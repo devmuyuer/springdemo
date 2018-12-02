@@ -24,6 +24,7 @@ public class UserInfo implements Serializable {
     private int age;
     private String sex;
     private String email;
+    private String password;
 
     // 与 Address 的关联
     private Long addressId;
@@ -41,11 +42,34 @@ public class UserInfo implements Serializable {
         this.addressId = addressId;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     // getter, setter
 
     @Override
     public String toString() {
-        return String.format("UserInfo [userId=%d, name=%s, age=%s, sex=%s, email=%s]", userId, name, age, sex, email);
+        return String.format("UserInfo [userId=%d, name=%s, age=%s, sex=%s, email=%s, password=%s]", userId, name, age, sex, email, password);
     }
 
 }

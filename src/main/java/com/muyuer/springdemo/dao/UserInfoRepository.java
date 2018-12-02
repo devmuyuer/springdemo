@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 
-public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
+public interface UserInfoRepository extends JpaRepository<UserInfo, String> {
 
     @Query(value = "SELECT new com.muyuer.springdemo.entity.ViewInfo(u, a) FROM UserInfo u, Address a WHERE u.addressId = a.addressId")
     public List<ViewInfo> findViewInfo();
