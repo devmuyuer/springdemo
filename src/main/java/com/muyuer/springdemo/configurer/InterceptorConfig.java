@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * jwt 拦截配置
  * @author muyuer 182443947@qq.com
  * @date 2018-11-30 18:53
  */

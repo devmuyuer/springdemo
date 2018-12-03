@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  * @author muyuer 182443947@qq.com
  * @date 2018-11-30 18:49
  */
+//需要登录才能进行操作的注解UserLoginToken
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserLoginToken {
