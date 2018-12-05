@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User, String> {
     @Query(value = "SELECT * FROM user WHERE username = ?1", nativeQuery = true)
     User findByUsername(String userName);
+
     @Query(value = "SELECT * FROM user WHERE Id = ?1", nativeQuery = true)
     User findUserById(String userName);
 }

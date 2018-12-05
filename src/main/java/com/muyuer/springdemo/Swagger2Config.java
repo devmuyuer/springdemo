@@ -10,6 +10,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger2 配置
+ * @author muyuer 182443947@qq.com
+ * @date 2018-12-02 17:24
+ */
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
@@ -26,9 +31,10 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("xx项目 RESTful APIs")
-                .description("xx项目后台api接口文档")
-                .version("1.0")
+                .title("XX系统_接口文档")
+                .description("XX系统,具体包括XXX,XXX模块...")
+                .contact(new springfox.documentation.service.Contact("muyuer",  "", ""))
+                .version("版本号:1.0")
                 .build();
     }
 

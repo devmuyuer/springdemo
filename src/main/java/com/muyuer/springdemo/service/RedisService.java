@@ -1,10 +1,9 @@
 package com.muyuer.springdemo.service;
 
-import org.springframework.stereotype.Service;
-
 /**
  * @author muyuer 182443947@qq.com
  * @date 2018-12-03 11:07
+ * @version 1.0
  */
 public interface RedisService {
     /**
