@@ -1,8 +1,11 @@
 package com.muyuer.springdemo;
 
+import com.muyuer.springdemo.service.AllUserService;
+import com.muyuer.springdemo.service.RedisService;
 import com.muyuer.springdemo.utils.SnowflakeIdHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -15,10 +18,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommTests {
+    @Autowired
+    private AllUserService allUserService;
+
     @Test
     public void testQuery() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println(SnowflakeIdHelper.getInstance().getId());
-        }
+        int i = 31;
+        allUserService.addUser("U0001"+i,"测试用户"+i);
+//        for (int i = 31; i < 30; i++) {
+//
+//            allUserService.addUser("U0001"+i,"测试用户"+i);
+//            //System.out.println(SnowflakeIdHelper.getInstance().getId());
+//        }
     }
 }

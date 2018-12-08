@@ -1,5 +1,7 @@
 package com.muyuer.springdemo.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -27,6 +29,8 @@ public class AllUserEntity {
     private Byte status;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "custom-id")
+    @GenericGenerator(name = "custom-id", strategy = "com.muyuer.springdemo.core.CustomIDGenerator")
     @Column(name = "user_id")
     public Long getUserId() {
         return userId;
@@ -203,23 +207,4 @@ public class AllUserEntity {
         return true;
     }
 
-    @Override
-    public Long hashCode() {
-        Long result = userId;
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
-        result = 31 * result + (userAccount != null ? userAccount.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (int) isAdmin;
-        result = 31 * result + (int) isManage;
-        result = 31 * result + (descript != null ? descript.hashCode() : 0);
-        result = 31 * result + (sortId != null ? sortId.hashCode() : 0);
-        result = 31 * result + (int) isActivity;
-        result = 31 * result + (lockDescript != null ? lockDescript.hashCode() : 0);
-        result = 31 * result + (defaultUnitId != null ? defaultUnitId.hashCode() : 0);
-        result = 31 * result + (doneTime != null ? doneTime.hashCode() : 0);
-        result = 31 * result + (cancelTime != null ? cancelTime.hashCode() : 0);
-        result = 31 * result + (closeTime != null ? closeTime.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        return result;
-    }
 }

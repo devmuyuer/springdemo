@@ -16,21 +16,22 @@ public class AllUserService {
     @Autowired
     private AllUserRepository allUserRepository;
 
-    //注册
-    public AllUserEntity addUser(String userAccount, String userName, String sex)  {
+    //添加用户
+    public AllUserEntity addUser(String userAccount, String userName)  {
         boolean flag;
         AllUserEntity user = new AllUserEntity();
-        if (account == null) {
+        if (userAccount == null) {
             return null;
         } else {
             //判存在
-            if (AllUserRepository.getByAccount(account) != null) {
+            if (allUserRepository.getByAccount(userAccount) != null) {
                 return null;
             } else {
                 Long userId = SnowflakeIdHelper.getId();
                 user.setUserId(userId);
                 user.setUserName(userName);
                 user.setUserAccount(userAccount);
+                user.setPassword("123");
                 allUserRepository.save(user);
                 return user;
             }
