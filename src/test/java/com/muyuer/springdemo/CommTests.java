@@ -1,13 +1,11 @@
 package com.muyuer.springdemo;
 
-import com.muyuer.springdemo.entity.ViewInfo;
 import com.muyuer.springdemo.utils.SnowflakeIdHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 
 /**
  * @author muyuer 182443947@qq.com
