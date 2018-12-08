@@ -1,5 +1,6 @@
 package com.muyuer.springdemo.entity;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
  * @version 1.0
  * @date 2018-12-06 05:20
  */
+@Data
 @Entity
 @Table(name = "all_user", schema = "tododb", catalog = "")
 public class AllUserEntity {
@@ -16,6 +18,7 @@ public class AllUserEntity {
     private String userName;
     private String userAccount;
     private String password;
+    private String salt;
     private byte isAdmin;
     private byte isManage;
     private String descript;
@@ -68,6 +71,15 @@ public class AllUserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Basic
+    @Column(name = "salt")
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     @Basic

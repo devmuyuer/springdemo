@@ -23,7 +23,7 @@ public class CommTests {
 
     @Test
     public void testQuery() {
-        int i = 31;
+        int i = 32;
         allUserService.addUser("U0001"+i,"测试用户"+i);
 //        for (int i = 31; i < 30; i++) {
 //

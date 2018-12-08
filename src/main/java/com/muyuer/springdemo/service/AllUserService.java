@@ -11,30 +11,9 @@ import org.springframework.stereotype.Service;
  * @version 1.0
  * @date 2018-12-06 05:20
  */
-@Service
-public class AllUserService {
-    @Autowired
-    private AllUserRepository allUserRepository;
+public interface AllUserService {
 
-    //添加用户
-    public AllUserEntity addUser(String userAccount, String userName)  {
-        boolean flag;
-        AllUserEntity user = new AllUserEntity();
-        if (userAccount == null) {
-            return null;
-        } else {
-            //判存在
-            if (allUserRepository.getByAccount(userAccount) != null) {
-                return null;
-            } else {
-                Long userId = SnowflakeIdHelper.getId();
-                user.setUserId(userId);
-                user.setUserName(userName);
-                user.setUserAccount(userAccount);
-                user.setPassword("123");
-                allUserRepository.save(user);
-                return user;
-            }
-        }
-    }
+    AllUserEntity getByAccount(String userAccount);
+
+    AllUserEntity addUser(String userAccount, String userName);
 }
