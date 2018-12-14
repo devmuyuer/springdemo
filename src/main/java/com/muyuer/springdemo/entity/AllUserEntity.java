@@ -1,6 +1,5 @@
 package com.muyuer.springdemo.entity;
 
-import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,7 +9,6 @@ import javax.persistence.*;
  * @version 1.0
  * @date 2018-12-06 05:20
  */
-@Data
 @Entity
 @Table(name = "all_user", schema = "tododb", catalog = "")
 public class AllUserEntity {

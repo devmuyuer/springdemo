@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 public interface AllUserService {
 
-    AllUserEntity getByAccount(String userAccount);
+    // AllUserEntity getByAccount(String userAccount);
 
     AllUserEntity addUser(String userAccount, String userName);
 }
