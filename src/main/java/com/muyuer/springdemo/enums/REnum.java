@@ -4,7 +4,7 @@ package com.muyuer.springdemo.enums;
  * Http返回信息枚举
  * @author muyuer 182443947@qq.com
  * @version 1.0
- * @date 2018-12-08 20:07
+ * @date 2018-12-17 20:07
  */
 public enum REnum {
 

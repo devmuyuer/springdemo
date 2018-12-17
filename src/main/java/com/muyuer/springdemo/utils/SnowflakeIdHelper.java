@@ -1,7 +1,5 @@
 package com.muyuer.springdemo.utils;
 
-import java.util.HashSet;
-
 /**
  * Twitter_Snowflake 生成ID
  * @author muyuer 182443947@qq.com

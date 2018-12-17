@@ -3,6 +3,7 @@ package com.muyuer.springdemo.exception;
 import com.muyuer.springdemo.enums.REnum;
 
 /**
+ * 自定义异常类
  * @author muyuer 182443947@qq.com
  * @version 1.0
  * @date 2018-12-08 20:06
