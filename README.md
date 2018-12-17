@@ -20,6 +20,6 @@ commons-lang3 | 3.7
 2018-12-03 | 集成Redis [参考](https://www.jianshu.com/p/19628db2e7ef)
 2018-12-05 | 增加Twitter分布式自增ID算法snowflake
 2018-12-08 | 通过注解GeneratedValue实现自定义ID生成
-2018-12-09 | 集成Shiro
+2018-12-09 | 集成Shiro [参考](https://github.com/sherlockgit/SpringBoot-Shrio-jpa)
 ***
 ### 联系方式：182443947@qq.com 
