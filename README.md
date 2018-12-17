@@ -9,6 +9,8 @@ swagger2 | 2.7.0
 JWT | 3.4.0
 com.alibaba.fastjson | 1.2.47
 Redis | 2.1.2.RELEASE  
+shiro | 1.3.2
+commons-lang3 | 3.7
 ## 功能实现
 参数名称 | 说明
 ------- |  ----
