@@ -5,8 +5,8 @@ import com.muyuer.springdemo.vo.R;
 
 /**
  * 对象模型工具类
- * author: 小宇宙
- * date: 2018/4/5
+ * @author muyuer 182443947@qq.com
+ * @date 2018-12-18 17:58
  */
 public class RUtil {
 

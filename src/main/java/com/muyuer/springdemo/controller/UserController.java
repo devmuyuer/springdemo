@@ -32,9 +32,9 @@ public class UserController {
                 jsonObject.put("message","登录失败,密码错误");
                 return jsonObject;
             }else {
-                String token = tokenService.getToken(userForBase);
-                jsonObject.put("token", token);
-                jsonObject.put("user", userForBase);
+//                String token = tokenService.getToken(userForBase);
+//                jsonObject.put("token", token);
+//                jsonObject.put("user", userForBase);
                 return jsonObject;
             }
         }

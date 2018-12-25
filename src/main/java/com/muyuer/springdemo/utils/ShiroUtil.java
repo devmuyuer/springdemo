@@ -9,8 +9,8 @@ import org.apache.shiro.subject.Subject;
 
 /**
  * shiro工具
- * author: 小宇宙
- * date: 2018/4/6
+ * @author muyuer 182443947@qq.com
+ * @date 2018-12-18 17:58
  */
 public class ShiroUtil {
 
