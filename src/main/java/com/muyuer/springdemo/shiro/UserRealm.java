@@ -26,8 +26,8 @@ import java.util.List;
 
 /**
  * 自定义Realm
- * @author Wang926454
- * @date 2018/8/30 14:10
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 @Service
 public class UserRealm extends AuthorizingRealm {

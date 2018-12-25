@@ -25,8 +25,8 @@ import java.io.PrintWriter;
 
 /**
  * JWT过滤
- * @author Wang926454
- * @date 2018/8/30 15:47
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 public class JwtFilter extends BasicHttpAuthenticationFilter {
     /**

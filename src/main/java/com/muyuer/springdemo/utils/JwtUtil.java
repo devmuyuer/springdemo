@@ -18,8 +18,8 @@ import java.util.Date;
 
 /**
  * JAVA-JWT工具类
- * @author Wang926454
- * @date 2018/8/30 11:45
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 @Component
 public class JwtUtil {

@@ -5,8 +5,8 @@ import java.util.Base64;
 
 /**
  * Base64工具
- * @author Wang926454
- * @date 2018/8/21 15:14
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 public class Base64ConvertUtil {
 
@@ -14,8 +14,6 @@ public class Base64ConvertUtil {
      * 加密JDK1.8
      * @param str
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/8/21 15:28
      */
     public static String encode(String str) throws UnsupportedEncodingException {
         byte[] encodeBytes = Base64.getEncoder().encode(str.getBytes("utf-8"));
@@ -26,8 +24,6 @@ public class Base64ConvertUtil {
      * 解密JDK1.8
      * @param str
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/8/21 15:28
      */
     public static String decode(String str) throws UnsupportedEncodingException {
         byte[] decodeBytes = Base64.getDecoder().decode(str.getBytes("utf-8"));

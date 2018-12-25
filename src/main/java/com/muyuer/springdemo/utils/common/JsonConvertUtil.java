@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * Json和Object的互相转换，转List必须Json最外层加[]，转Object，Json最外层不要加[]
- * @author Wang926454
- * @date 2018/8/9 15:37
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 public class JsonConvertUtil {
     /**

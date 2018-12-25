@@ -13,8 +13,8 @@ import java.util.Set;
 
 /**
  * JedisUtil(推荐存Byte数组，存Json字符串效率更慢)
- * @author Wang926454
- * @date 2018/9/4 15:45
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 @Component
 public class JedisUtil {
@@ -36,8 +36,6 @@ public class JedisUtil {
      * 获取Jedis实例
      * @param 
      * @return redis.clients.jedis.Jedis
-     * @author Wang926454
-     * @date 2018/9/4 15:47
      */
     public static synchronized Jedis getJedis() {
         try {
@@ -56,8 +54,6 @@ public class JedisUtil {
      * 释放Jedis资源
      * @param
      * @return void
-     * @author Wang926454
-     * @date 2018/9/5 9:16
      */
     public static void closePool() {
         try {
@@ -71,8 +67,6 @@ public class JedisUtil {
      * 获取redis键值-object
      * @param key
      * @return java.lang.Object
-     * @author Wang926454
-     * @date 2018/9/4 15:47
      */
     public static Object getObject(String key) {
         Jedis jedis = null;
@@ -97,8 +91,6 @@ public class JedisUtil {
      * @param key
 	 * @param value
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/4 15:49
      */
     public static String setObject(String key, Object value) {
         Jedis jedis = null;
@@ -120,8 +112,6 @@ public class JedisUtil {
 	 * @param value
 	 * @param expiretime
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/4 15:50
      */
     public static String setObject(String key, Object value, int expiretime) {
         String result = "";
@@ -146,8 +136,6 @@ public class JedisUtil {
      * 获取redis键值-Json
      * @param key
      * @return java.lang.Object
-     * @author Wang926454
-     * @date 2018/9/4 15:47
      */
     public static String getJson(String key) {
         Jedis jedis = null;
@@ -168,8 +156,6 @@ public class JedisUtil {
      * @param key
      * @param value
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/4 15:49
      */
     public static String setJson(String key, String value) {
         Jedis jedis = null;
@@ -191,8 +177,6 @@ public class JedisUtil {
      * @param value
      * @param expiretime
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/4 15:50
      */
     public static String setJson(String key, String value, int expiretime) {
         String result = "";
@@ -217,8 +201,6 @@ public class JedisUtil {
      * 删除key
      * @param key
      * @return java.lang.Long
-     * @author Wang926454
-     * @date 2018/9/4 15:50
      */
     public static Long delKey(String key) {
         Jedis jedis = null;
@@ -238,8 +220,6 @@ public class JedisUtil {
      * key是否存在
      * @param key
      * @return java.lang.Boolean
-     * @author Wang926454
-     * @date 2018/9/4 15:51
      */
     public static Boolean exists(String key) {
         Jedis jedis = null;
@@ -259,8 +239,6 @@ public class JedisUtil {
      * 模糊查询获取key集合(keys的速度非常快，但在一个大的数据库中使用它仍然可能造成性能问题，生产不推荐使用)
      * @param key
      * @return java.util.Set<java.lang.String>
-     * @author Wang926454
-     * @date 2018/9/6 9:43
      */
     public static Set<String> keysS(String key) {
         Jedis jedis = null;
@@ -280,8 +258,6 @@ public class JedisUtil {
      * 模糊查询获取key集合(keys的速度非常快，但在一个大的数据库中使用它仍然可能造成性能问题，生产不推荐使用)
      * @param key
      * @return java.util.Set<java.lang.String>
-     * @author Wang926454
-     * @date 2018/9/6 9:43
      */
     public static Set<byte[]> keysB(String key) {
         Jedis jedis = null;
@@ -301,8 +277,6 @@ public class JedisUtil {
      * 获取过期剩余时间
      * @param key
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/11 16:26
      */
     public static Long ttl(String key) {
         Long result = -2L;

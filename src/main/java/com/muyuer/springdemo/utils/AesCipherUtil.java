@@ -17,8 +17,8 @@ import java.security.Security;
 
 /**
  * AES加密解密工具类
- * @author Wang926454
- * @date 2018/8/31 16:39
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 @Component
 public class AesCipherUtil {
@@ -43,8 +43,6 @@ public class AesCipherUtil {
      * 加密
      * @param str
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/8/31 16:56
      */
     public static String enCrypto(String str) {
         try{
@@ -92,8 +90,6 @@ public class AesCipherUtil {
      * 解密
      * @param str
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/8/31 16:56
      */
     public static String deCrypto(String str) {
         try{

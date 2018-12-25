@@ -12,8 +12,8 @@ import java.util.*;
 
 /**
  * 重写Shiro的Cache保存读取
- * @author Wang926454
- * @date 2018/9/4 17:31
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 public class CustomCache<K,V> implements Cache<K,V> {
 
@@ -21,8 +21,6 @@ public class CustomCache<K,V> implements Cache<K,V> {
      * 缓存的key名称获取为shiro:cache:account
      * @param key
      * @return java.lang.String
-     * @author Wang926454
-     * @date 2018/9/4 18:33
      */
     private String getKey(Object key){
         return Constant.PREFIX_SHIRO_CACHE + JwtUtil.getClaim(key.toString(), Constant.ACCOUNT);

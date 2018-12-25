@@ -14,8 +14,8 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * Jedis配置，项目启动注入JedisPool
  * http://www.cnblogs.com/GodHeng/p/9301330.html
- * @author Wang926454
- * @date 2018/9/5 10:35
+ * @author MuYuer 182443947@qq.com
+ * @date 2018-12-25 21:59
  */
 @Configuration
 @EnableAutoConfiguration
