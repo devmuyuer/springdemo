@@ -2,12 +2,18 @@ package com.muyuer.springdemo.shiro;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
-public class JWTToken implements AuthenticationToken {
-
-    // 密钥
+/**
+ * JwtToken
+ * @author Wang926454
+ * @date 2018/8/30 14:06
+ */
+public class JwtToken implements AuthenticationToken {
+    /**
+     * Token
+     */
     private String token;
 
-    public JWTToken(String token) {
+    public JwtToken(String token) {
         this.token = token;
     }
 

@@ -4,7 +4,6 @@ import com.muyuer.springdemo.enums.REnum;
 import com.muyuer.springdemo.exception.SystemException;
 import com.muyuer.springdemo.from.SysRoleFrom;
 import com.muyuer.springdemo.service.SysRoleService;
-import com.muyuer.springdemo.utils.Assert;
 import com.muyuer.springdemo.vo.R;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -71,7 +70,7 @@ public class SysRoleController {
     @GetMapping("/selectRoleDetail")
     public R selectRoleDetail(@RequestParam(value = "id",required = false) Integer id){
 
-        Assert.isNull(id,"id不能为空");
+        //Assert.isNull(id,"id不能为空");
         return sysRoleService.selectRoleDetail(id);
 
     }
@@ -87,7 +86,7 @@ public class SysRoleController {
     public R updateRole(@Valid @RequestBody SysRoleFrom sysRoleFrom,
                         BindingResult bindingResult){
 
-        Assert.isNull(sysRoleFrom.getId(),"id不能为空");
+        //Assert.isNull(sysRoleFrom.getId(),"id不能为空");
 
         if(bindingResult.hasErrors()){
             log.error("【更新角色】参数不正确:sysRoleFrom={}"+ sysRoleFrom);

@@ -8,7 +8,6 @@ import com.muyuer.springdemo.entity.SysRole;
 import com.muyuer.springdemo.entity.SysRoleResource;
 import com.muyuer.springdemo.from.SysRoleFrom;
 import com.muyuer.springdemo.service.SysRoleService;
-import com.muyuer.springdemo.utils.JPAUtil;
 import com.muyuer.springdemo.utils.RUtil;
 import com.muyuer.springdemo.vo.R;
 import com.muyuer.springdemo.vo.SysRoleVo;
@@ -78,13 +77,14 @@ public class SysRoleServiceImpl implements SysRoleService {
      * @param pageable
      * @return
      */
+    @Override
     public R selectRoleList(String name,Pageable pageable){
         Specification<SysRole> specification = new Specification<SysRole>() {
             @Override
             public Predicate toPredicate(Root<SysRole> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 List<Predicate> predicate = new ArrayList<>();
                 if(StringUtils.isNoneBlank(name)){
-                    predicate.add(criteriaBuilder.like(root.get("name").as(String.class), JPAUtil.like(name)));
+                    predicate.add(criteriaBuilder.like(root.get("name").as(String.class), "%"+name+"%"));
                 }
                 Predicate[] pre = new Predicate[predicate.size()];
                 return criteriaQuery.where(predicate.toArray(pre)).getRestriction();

@@ -9,9 +9,7 @@ import com.muyuer.springdemo.entity.SysUserRole;
 import com.muyuer.springdemo.enums.REnum;
 import com.muyuer.springdemo.from.SysUserFrom;
 import com.muyuer.springdemo.service.SysUserService;
-import com.muyuer.springdemo.utils.JPAUtil;
 import com.muyuer.springdemo.utils.RUtil;
-import com.muyuer.springdemo.utils.ShiroUtil;
 import com.muyuer.springdemo.vo.R;
 import com.muyuer.springdemo.vo.SysUserVo;
 import lombok.extern.slf4j.Slf4j;
@@ -76,10 +74,10 @@ public class SysUserServiceImpl implements SysUserService {
         BeanUtils.copyProperties(sysUserFrom,sysUser);
 
         /*生成盐以及加密码并保存*/
-        String salt = ShiroUtil.getSalt();
-        String md5Password = ShiroUtil.MD5(sysUser.getPassword(),salt);
-        sysUser.setPassword(md5Password);
-        sysUser.setSalt(salt);
+//        String salt = ShiroUtil.getSalt();
+//        String md5Password = ShiroUtil.MD5(sysUser.getPassword(),salt);
+//        sysUser.setPassword(md5Password);
+//        sysUser.setSalt(salt);
         SysUser sysUserSave = sysUserRepository.save(sysUser);
         log.info("用户基本信息保存：sysUserSave = {}"+sysUserSave);
 
@@ -109,7 +107,7 @@ public class SysUserServiceImpl implements SysUserService {
             public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 List<Predicate> predicate = new ArrayList<>();
                 if(StringUtils.isNoneBlank(name)){
-                    predicate.add(criteriaBuilder.like(root.get("name").as(String.class), JPAUtil.like(name)));
+                    predicate.add(criteriaBuilder.like(root.get("name").as(String.class),"%"+name+"%"));
                 }
                 Predicate[] pre = new Predicate[predicate.size()];
                 return criteriaQuery.where(predicate.toArray(pre)).getRestriction();
@@ -172,10 +170,10 @@ public class SysUserServiceImpl implements SysUserService {
         BeanUtils.copyProperties(sysUserFrom,sysUser);
 
         /*初始化密码与盐并保存*/
-        String salt = ShiroUtil.getSalt();
-        String md5Password = ShiroUtil.MD5(sysUser.getPassword(),salt);
-        sysUser.setPassword(md5Password);
-        sysUser.setSalt(salt);
+//        String salt = ShiroUtil.getSalt();
+//        String md5Password = ShiroUtil.MD5(sysUser.getPassword(),salt);
+//        sysUser.setPassword(md5Password);
+//        sysUser.setSalt(salt);
         SysUser sysUserSave = sysUserRepository.save(sysUser);
         log.info("用户更新：sysUserSave = {}"+ sysUserSave);
 

@@ -4,9 +4,11 @@ import com.muyuer.springdemo.enums.REnum;
 import com.muyuer.springdemo.exception.SystemException;
 import com.muyuer.springdemo.from.SysUserFrom;
 import com.muyuer.springdemo.service.SysUserService;
-import com.muyuer.springdemo.utils.Assert;
 import com.muyuer.springdemo.vo.R;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +35,9 @@ public class SysUserController {
      * @param bindingResult
      * @return
      */
-    //@RequiresPermissions("sys:user:insert")
+    @ApiOperation("保存用户")
+    @ApiImplicitParam(name = "sysUserFrom", value = "SysUserFrom", dataType = "SysUserFrom")
+    @RequiresPermissions("sys:user:insert")
     @PostMapping("/saveUser")
     public R saveUser(@Valid @RequestBody SysUserFrom sysUserFrom,
                       BindingResult bindingResult){
@@ -53,7 +57,9 @@ public class SysUserController {
      * @param name
      * @return
      */
-    //@RequiresPermissions("sys:user:list")
+    @ApiOperation("查询用户列表")
+    @ApiImplicitParam(name = "page", value = "页码", dataType = "Integer")
+    @RequiresPermissions("sys:user:list")
     @GetMapping("/selectUserList")
     public R selectUserList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                             @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -71,8 +77,6 @@ public class SysUserController {
     @RequiresPermissions("sys:user:detail")
     @GetMapping("/selectUserDetail")
     public R selectUserDetail(@RequestParam(value = "id",required = false) Integer id){
-
-        Assert.isNull(id,"id不能为空");
         return sysUserService.selectUserDetail(id);
     }
 
@@ -87,7 +91,7 @@ public class SysUserController {
     public R updateUser(@Valid @RequestBody SysUserFrom sysUserFrom,
                         BindingResult bindingResult){
 
-        Assert.isNull(sysUserFrom.getId(),"id不能为空");
+        //Assert.isNull(sysUserFrom.getId(),"id不能为空");
 
         if(bindingResult.hasErrors()){
             log.error("【更新用户】参数不正确:sysRoleFrom={}"+ sysUserFrom);

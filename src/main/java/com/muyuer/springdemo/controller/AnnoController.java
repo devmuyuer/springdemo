@@ -1,21 +1,21 @@
 package com.muyuer.springdemo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.muyuer.springdemo.core.Constant;
 import com.muyuer.springdemo.entity.SysUser;
 import com.muyuer.springdemo.enums.REnum;
+import com.muyuer.springdemo.exception.CustomUnauthorizedException;
 import com.muyuer.springdemo.service.SysUserService;
 import com.muyuer.springdemo.service.TokenService;
-import com.muyuer.springdemo.utils.Assert;
-import com.muyuer.springdemo.utils.JWTUtil;
-import com.muyuer.springdemo.utils.RUtil;
-import com.muyuer.springdemo.utils.ShiroUtil;
+import com.muyuer.springdemo.utils.*;
+import com.muyuer.springdemo.utils.common.StringUtil;
 import com.muyuer.springdemo.vo.R;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -27,6 +27,12 @@ import java.util.Map;
 @Slf4j
 public class AnnoController {
 
+    /**
+     * RefreshToken过期时间
+     */
+    @Value("${refreshTokenExpireTime}")
+    private String refreshTokenExpireTime;
+
     @Autowired
     SysUserService sysUserService;
 
@@ -34,29 +40,46 @@ public class AnnoController {
     TokenService tokenService;
 
     @PostMapping("/login")
-    public R login(@RequestBody Map<String,String> map){
+    public R login(@RequestBody Map<String,String> map, HttpServletResponse httpServletResponse) {
         String userName = map.get("account");
         String password = map.get("password");
-        Assert.isBlank(userName,"账号不能为空");
-        Assert.isBlank(password,"密码不能为空");
 
-        JSONObject jsonObject=new JSONObject();
-        try{
-            SysUser userForBase = sysUserService.findByAccount(userName);
-            String tokenStr = JWTUtil.sign(userName, password);
-            jsonObject.put("token", tokenStr);
-            jsonObject.put("user", userForBase);
-            return RUtil.success(jsonObject);
-        }catch (UnknownAccountException e) {
-           return RUtil.error(REnum.USERNAME_OR_PASSWORD_ERROR.getCode(),REnum.USERNAME_OR_PASSWORD_ERROR.getMessage());
-        }catch (IncorrectCredentialsException e) {
-           return RUtil.error(REnum.USERNAME_OR_PASSWORD_ERROR.getCode(),REnum.USERNAME_OR_PASSWORD_ERROR.getMessage());
-        }catch (DisabledAccountException e) {
-           return RUtil.error(REnum.ACCOUNT_DISABLE.getCode(),REnum.ACCOUNT_DISABLE.getMessage());
-        }catch (AuthenticationException e) {
-           return RUtil.error(REnum.AUTH_ERROR.getCode(),REnum.AUTH_ERROR.getMessage());
+        if (StringUtil.isBlank(userName)) {
+            return RUtil.error(-1, "账号不能为空");
+        }
+        if (StringUtil.isBlank(userName)) {
+            return RUtil.error(-1, "密码不能为空");
         }
 
+        SysUser sysUser = sysUserService.findByAccount(userName);
+        if (sysUser == null) {
+            throw new CustomUnauthorizedException("该帐号不存在(The account does not exist.)");
+        }
+
+        // 密码进行AES解密
+        String key = AesCipherUtil.deCrypto(sysUser.getPassword());
+        // 因为密码加密是以帐号+密码的形式进行加密的，所以解密后的对比是帐号+密码
+        if (key.equals(sysUser.getAccount() + password)) {
+            // 清除可能存在的Shiro权限信息缓存
+            if (JedisUtil.exists(Constant.PREFIX_SHIRO_CACHE + sysUser.getAccount())) {
+                JedisUtil.delKey(Constant.PREFIX_SHIRO_CACHE + sysUser.getAccount());
+            }
+            // 设置RefreshToken，时间戳为当前时间戳，直接设置即可(不用先删后设，会覆盖已有的RefreshToken)
+            String currentTimeMillis = String.valueOf(System.currentTimeMillis());
+            JedisUtil.setObject(Constant.PREFIX_SHIRO_REFRESH_TOKEN + sysUser.getAccount(), currentTimeMillis, Integer.parseInt(refreshTokenExpireTime));
+            // 从Header中Authorization返回AccessToken，时间戳为当前时间戳
+            String token = JwtUtil.sign(sysUser.getAccount(), currentTimeMillis);
+            httpServletResponse.setHeader("Authorization", token);
+            httpServletResponse.setHeader("Access-Control-Expose-Headers", "Authorization");
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("token", token);
+            jsonObject.put("user", sysUser);
+            return RUtil.success(jsonObject);
+            //return new ResponseBean(HttpStatus.OK.value(), "登录成功(Login Success.)", null);
+        } else {
+            throw new CustomUnauthorizedException("帐号或密码错误(Account or Password Error.)");
+        }
     }
 
     /**
@@ -65,7 +88,7 @@ public class AnnoController {
      */
     @GetMapping("/logout")
     public R logout(){
-        ShiroUtil.logout();
+        // ShiroUtil.logout();
         return RUtil.success();
     }
 
