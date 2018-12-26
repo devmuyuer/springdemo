@@ -18,13 +18,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommTests {
-    @Autowired
-    private AllUserService allUserService;
+//    @Autowired
+//    private AllUserService allUserService;
 
     @Test
     public void testQuery() {
-        int i = 32;
-        allUserService.addUser("U0001"+i,"测试用户"+i);
+//        int i = 32;
+ //       allUserService.addUser("U0001"+i,"测试用户"+i);
 //        for (int i = 31; i < 30; i++) {
 //
 //            allUserService.addUser("U0001"+i,"测试用户"+i);
