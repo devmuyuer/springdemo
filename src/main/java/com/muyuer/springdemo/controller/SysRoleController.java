@@ -6,6 +6,7 @@ import com.muyuer.springdemo.from.SysRoleFrom;
 import com.muyuer.springdemo.service.SysRoleService;
 import com.muyuer.springdemo.vo.R;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -48,10 +49,10 @@ public class SysRoleController {
      * 查询角色列表
      * @param page
      * @param size
-     * @param name
+     * @param name @RequiresPermissions("sys:role:list")
      * @return
      */
-    @RequiresPermissions("sys:role:list")
+    @RequiresAuthentication
     @GetMapping("/selectRoleList")
     public R selectRoleList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                             @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -62,7 +63,7 @@ public class SysRoleController {
     }
 
     /**
-     * 查询订单详情
+     * 查询角色详情
      * @param id
      * @return
      */
