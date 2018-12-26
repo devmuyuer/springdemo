@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 /**
- * JAVA-JWT工具类
+ * JWT工具类
  * @author MuYuer 182443947@qq.com
  * @date 2018-12-25 21:59
  */
@@ -53,8 +53,6 @@ public class JwtUtil {
      * 校验token是否正确
      * @param token Token
      * @return boolean 是否正确
-     * @author Wang926454
-     * @date 2018/8/31 9:05
      */
     public static boolean verify(String token) {
         try {
@@ -94,8 +92,6 @@ public class JwtUtil {
      * 生成签名
      * @param account 帐号
      * @return java.lang.String 返回加密的Token
-     * @author Wang926454
-     * @date 2018/8/31 9:07
      */
     public static String sign(String account, String currentTimeMillis) {
         try {
