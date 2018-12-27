@@ -1,4 +1,4 @@
-package com.muyuer.springdemo.utils;
+package com.muyuer.springdemo.shiro.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -10,8 +10,8 @@ import com.muyuer.springdemo.exception.CustomException;
 import com.muyuer.springdemo.utils.common.Base64ConvertUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;

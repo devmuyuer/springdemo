@@ -1,11 +1,11 @@
-package com.muyuer.springdemo.shiro;
+package com.muyuer.springdemo.shiro.jwt;
 
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.muyuer.springdemo.core.Constant;
 import com.muyuer.springdemo.exception.CustomException;
+import com.muyuer.springdemo.shiro.jwt.JwtToken;
 import com.muyuer.springdemo.utils.JedisUtil;
-import com.muyuer.springdemo.utils.JwtUtil;
 import com.muyuer.springdemo.utils.RUtil;
 import com.muyuer.springdemo.utils.common.JsonConvertUtil;
 import com.muyuer.springdemo.utils.common.PropertiesUtil;

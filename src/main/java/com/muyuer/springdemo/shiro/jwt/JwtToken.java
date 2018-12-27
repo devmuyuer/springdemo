@@ -1,4 +1,4 @@
-package com.muyuer.springdemo.shiro;
+package com.muyuer.springdemo.shiro.jwt;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

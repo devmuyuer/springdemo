@@ -1,14 +1,14 @@
 package com.muyuer.springdemo.shiro;
 
 import com.muyuer.springdemo.core.Constant;
-import com.muyuer.springdemo.entity.SysResource;
 import com.muyuer.springdemo.entity.SysRole;
 import com.muyuer.springdemo.entity.SysUser;
 import com.muyuer.springdemo.service.SysResourceService;
 import com.muyuer.springdemo.service.SysRoleService;
 import com.muyuer.springdemo.service.SysUserService;
+import com.muyuer.springdemo.shiro.jwt.JwtToken;
+import com.muyuer.springdemo.shiro.jwt.JwtUtil;
 import com.muyuer.springdemo.utils.JedisUtil;
-import com.muyuer.springdemo.utils.JwtUtil;
 import com.muyuer.springdemo.utils.common.StringUtil;
 import com.muyuer.springdemo.vo.SysUserVo;
 import org.apache.shiro.authc.AuthenticationException;

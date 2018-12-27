@@ -1,8 +1,8 @@
 package com.muyuer.springdemo.shiro.cache;
 
 import com.muyuer.springdemo.core.Constant;
+import com.muyuer.springdemo.shiro.jwt.JwtUtil;
 import com.muyuer.springdemo.utils.JedisUtil;
-import com.muyuer.springdemo.utils.JwtUtil;
 import com.muyuer.springdemo.utils.common.PropertiesUtil;
 import com.muyuer.springdemo.utils.common.SerializableUtil;
 import org.apache.shiro.cache.Cache;

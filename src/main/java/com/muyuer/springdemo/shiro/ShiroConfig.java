@@ -1,6 +1,7 @@
 package com.muyuer.springdemo.shiro;
 
 import com.muyuer.springdemo.shiro.cache.CustomCacheManager;
+import com.muyuer.springdemo.shiro.jwt.JwtFilter;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;

@@ -7,6 +7,7 @@ import com.muyuer.springdemo.enums.REnum;
 import com.muyuer.springdemo.exception.CustomUnauthorizedException;
 import com.muyuer.springdemo.service.SysUserService;
 import com.muyuer.springdemo.service.TokenService;
+import com.muyuer.springdemo.shiro.jwt.JwtUtil;
 import com.muyuer.springdemo.utils.*;
 import com.muyuer.springdemo.utils.common.StringUtil;
 import com.muyuer.springdemo.vo.R;
